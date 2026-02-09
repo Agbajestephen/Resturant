@@ -6,17 +6,17 @@ const Success = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const timeoutId = setInterval(() => {
-      setCountdown((preCount) => {
-        if (preCount === 1) {
-          clearInterval(timeoutId);
-          navigate("/");
-        }
-        return preCount - 1;
-      });
+    const intervalId = setInterval(() => {
+      setCountdown((prevCount) => Math.max(prevCount - 1, 0));
     }, 1000);
-    return () => clearInterval(timeoutId);
-  }, [navigate]);
+    return () => clearInterval(intervalId);
+  }, []);
+
+  useEffect(() => {
+    if (countdown === 0) {
+      navigate("/");
+    }
+  }, [countdown, navigate]);
 
   return (
     <>

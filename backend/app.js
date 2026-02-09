@@ -8,6 +8,7 @@ const app = express();
 dotenv.config({ path: "./config/config.env" });
 
 const allowedOrigins = [
+  "https://goke-resturant.vercel.app",
   process.env.FRONTEND_URL,
   "http://localhost:5173",
   "http://localhost:3000",
@@ -21,7 +22,7 @@ app.use(
       return callback(new Error("Not allowed by CORS"));
     },
     methods: ["POST", "OPTIONS"],
-    credentials: true,
+    credentials: false,
   }),
 );
 app.options(/.*/, cors());

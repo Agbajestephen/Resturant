@@ -1,5 +1,5 @@
 import express from "express";
-import cros from "cors";
+import cors from "cors";
 import dotenv from "dotenv";
 import {dbConnection} from "./database/dbConnection.js"
 import { errorMiddleware } from "./error/error.js";
@@ -8,9 +8,9 @@ const app = express();
 dotenv.config({ path: "./config/config.env" });
 
 app.use(
-  cros({
+  cors({
     origin: [process.env.FRONTEND_URL],
-    methods: ["POST"],
+    methods: ["POST", "OPTIONS"],
     credentials: true,
   }),
 );

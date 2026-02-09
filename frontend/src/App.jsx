@@ -1,6 +1,6 @@
 import "./App.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Toaster from "react-hot-toast";
+import { Toaster } from "react-hot-toast";
 import Home from "./Pages/Home.jsx";
 import Success from "./Pages/Success.jsx";
 import NotFound from "./Pages/NotFound.jsx";
@@ -13,7 +13,7 @@ const App = () => {
         <Route path="/success" element={<Success />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
-      <Toaster />
+      <Toaster position="top-right" />
     </Router>
   );
 };
